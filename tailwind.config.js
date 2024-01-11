@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        box: "-10px 10px 30px 0px rgba(255, 255, 0, 0.3)",
+      },
+    },
   },
   plugins: [],
 };

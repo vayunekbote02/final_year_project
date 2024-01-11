@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    45deg,
+    #ffd700,
+    #ffb300,
+    #ff6347,
+    #ff4500,
+    #ff6b26,
+    rgb(255, 224, 47)
+  );
+  background-size: 400% 400%;
+  animation: gradientAnimation 12s infinite;
+}
