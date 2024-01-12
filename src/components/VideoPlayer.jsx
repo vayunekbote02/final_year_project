@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import * as faceapi from '@vladmandic/face-api';
 import './VideoPlayer.css';
 
-const VideoPlayer = () => {
+const VideoPlayer = ( {setExpression} ) => {
   const videoRef = useRef();
   const canvasRef = useRef();
   const [emotion, setEmotion] = useState("");
+
 
   useEffect(() => {
     async function init() {
@@ -40,18 +41,23 @@ const VideoPlayer = () => {
     setInterval(async () => {
       const detections = await faceapi.detectAllFaces(videoRef.current,
         new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-
-      updateCanvas(detections, expressionHistory);
-    }, 100);
+       if(detections.length > 0) {
+         updateCanvas(detections, expressionHistory);
+         console.log("detections" , detections)
+       }
+    }, 1000);
+    
   };
 
   const updateCanvas = (detections, expressionHistory) => {
+
     canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(videoRef.current);
     faceapi.matchDimensions(canvasRef.current, { width: 600, height: 500 });
 
     const expressions = detections[0]?.expressions;
-
+    
     if (expressions) {
+      setExpression(expressions)
       const { maxExpression, maxProbability } = findMaxExpression(expressions);
 
       // console.log("Detected emotion:", maxExpression);
@@ -112,12 +118,8 @@ const VideoPlayer = () => {
         className="appvide rounded-lg overflow-hidden"
         autoPlay
       ></video>
-      <canvas className='appcanvas w-full h-full  ' ref={canvasRef} ></canvas>
+      <canvas className='appcanvas w-full h-full border ' ref={canvasRef} ></canvas>
       <h4>{emotion}</h4>
-
-
-      {/* delete this */}
-      <h1>kys chutiya design hai sab change kar pls and dont use GPT</h1>
 
     </div>
   );
