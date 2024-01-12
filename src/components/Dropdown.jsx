@@ -1,6 +1,6 @@
 const Dropdown = () => {
   return (
-    <div className="relative flex flex-col justify-center py-6 sm:py-12">
+    <div className="relative z-10 flex flex-col justify-center py-6 sm:py-12">
       <div className="relative items-center w-full max-w-screen-sm mx-auto">
         <div id="bouton" className="relative w-full group/bouton">
           <button className="relative w-full py-3 pr-12 bg-yellow-100 min-w-44">

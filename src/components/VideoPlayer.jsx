@@ -1,12 +1,37 @@
-import { useEffect, useRef, useState } from "react";
-import * as faceapi from '@vladmandic/face-api';
-import './VideoPlayer.css';
+// import { useEffect, useRef } from "react";
+// const App = () => {
+//   const videoRef = useRef();
 
-const VideoPlayer = ( {setExpression} ) => {
+//   useEffect(() => {
+//     startVideo();
+//   }, []);
+
+//   const startVideo = async () => {
+//     try {
+//       const currentStream = await navigator.mediaDevices.getUserMedia({
+//         video: true,
+//       });
+//       videoRef.current.srcObject = currentStream;
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <video crossOrigin="anonymous" ref={videoRef} autoPlay></video>
+//     </div>
+//   );
+// };
+// export default App;
+
+import { useEffect, useRef, useState } from "react";
+import * as faceapi from "@vladmandic/face-api";
+import "./VideoPlayer.css";
+
+const VideoPlayer = ({ setExpression, setEmotion, emotion }) => {
   const videoRef = useRef();
   const canvasRef = useRef();
-  const [emotion, setEmotion] = useState("");
-
 
   useEffect(() => {
     async function init() {
@@ -19,7 +44,9 @@ const VideoPlayer = ( {setExpression} ) => {
 
   const startVideo = async () => {
     try {
-      const currentStream = await navigator.mediaDevices.getUserMedia({ video: true });
+      const currentStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
       videoRef.current.srcObject = currentStream;
     } catch (error) {
       console.error(error);
@@ -39,25 +66,27 @@ const VideoPlayer = ( {setExpression} ) => {
     const expressionHistory = [];
 
     setInterval(async () => {
-      const detections = await faceapi.detectAllFaces(videoRef.current,
-        new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-       if(detections.length > 0) {
-         updateCanvas(detections, expressionHistory);
-         console.log("detections" , detections)
-       }
-    }, 1000);
-    
+      const detections = await faceapi
+        .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceExpressions();
+      if (detections.length > 0) {
+        updateCanvas(detections, expressionHistory);
+        console.log("detections", detections);
+      }
+    }, 500);
   };
 
   const updateCanvas = (detections, expressionHistory) => {
-
-    canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(videoRef.current);
+    canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(
+      videoRef.current
+    );
     faceapi.matchDimensions(canvasRef.current, { width: 600, height: 500 });
 
     const expressions = detections[0]?.expressions;
-    
+
     if (expressions) {
-      setExpression(expressions)
+      setExpression(expressions);
       const { maxExpression, maxProbability } = findMaxExpression(expressions);
 
       // console.log("Detected emotion:", maxExpression);
@@ -67,15 +96,18 @@ const VideoPlayer = ( {setExpression} ) => {
       // console.log(expressionHistory);
 
       if (expressionHistory.length >= 10) {
-        const predominantExpression = findPredominantExpression(expressionHistory);
+        const predominantExpression =
+          findPredominantExpression(expressionHistory);
         // console.log("Predominant emotion in the last 10 detections:", predominantExpression);
         setEmotion(predominantExpression);
-        recommendMusic(predominantExpression);
         expressionHistory.length = 0;
       }
     }
 
-    const resized = faceapi.resizeResults(detections, { width: 600, height: 500 });
+    const resized = faceapi.resizeResults(detections, {
+      width: 600,
+      height: 500,
+    });
 
     faceapi.draw.drawDetections(canvasRef.current, resized);
     faceapi.draw.drawFaceLandmarks(canvasRef.current, resized);
@@ -102,25 +134,23 @@ const VideoPlayer = ( {setExpression} ) => {
       return counts;
     }, {});
 
-    return Object.keys(expressionCounts).reduce((a, b) => expressionCounts[a] > expressionCounts[b] ? a : b);
+    return Object.keys(expressionCounts).reduce((a, b) =>
+      expressionCounts[a] > expressionCounts[b] ? a : b
+    );
   };
 
-  const recommendMusic = (emotion) => {
-    console.log("Recommend music based on emotion:", emotion);
-  };
-
-  
   return (
     <div className="container">
       <video
         crossOrigin="anonymous"
         ref={videoRef}
-        className="appvide rounded-lg overflow-hidden"
+        className="overflow-hidden rounded-lg appvide"
         autoPlay
       ></video>
-      <canvas className='appcanvas w-full h-full border ' ref={canvasRef} ></canvas>
-      <h4>{emotion}</h4>
-
+      <canvas
+        className="w-full h-full border appcanvas "
+        ref={canvasRef}
+      ></canvas>
     </div>
   );
 };
