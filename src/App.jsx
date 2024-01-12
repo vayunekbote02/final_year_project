@@ -19,7 +19,7 @@ function App() {
         {/* Second column -> Main video player and music player components */}
         <div className="grid col-span-2 grid-rows-3 gap-8">
           {/* First two rows for the video player */}
-          <div className="row-span-2">
+          <div className="row-span-2 p-2 mt-10">
             <VideoPlayer />
           </div>
           {/* Last row for the music player */}
