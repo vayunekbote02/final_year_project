@@ -148,7 +148,7 @@ const VideoPlayer = ({ setExpression, setEmotion, emotion }) => {
         autoPlay
       ></video>
       <canvas
-        className="w-full h-full border appcanvas "
+        className="w-full h-full appcanvas "
         ref={canvasRef}
       ></canvas>
     </div>
