@@ -46,11 +46,11 @@ const BarChart = ({ expression }) => {
   };
 
   return (
-    <div>
-      <h2 className="font-bold text-white">
+    <div className="">
+      <h2 className="font-bold text-white text-center">
         Realtime expression prediction chart
       </h2>
-      <Bar data={chartData} options={chartOptions} />
+      <Bar className="w-full " data={chartData} options={chartOptions} />
     </div>
   );
 };
