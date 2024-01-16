@@ -46,8 +46,8 @@ const BarChart = ({ expression }) => {
   };
 
   return (
-    <div className="">
-      <h2 className="font-bold text-white text-center">
+    <div className="w-full h-full bg-yellow-600 border border-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30">
+      <h2 className="font-bold text-center text-white font-quicksand">
         Realtime expression prediction chart
       </h2>
       <Bar className="w-full " data={chartData} options={chartOptions} />

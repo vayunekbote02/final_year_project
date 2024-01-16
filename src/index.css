@@ -42,14 +42,19 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(
-    45deg,
-    #ffd700,
-    #ffb300,
-    #ff6347,
-    #ff4500,
-    #ff6b26,
-    rgb(255, 224, 47)
+  background-image: linear-gradient(
+    to right top,
+    #ead600,
+    #ebcf02,
+    #ecc905,
+    #edc20a,
+    #edbc0f,
+    #efb308,
+    #f1ab04,
+    #f3a204,
+    #f79501,
+    #fa8606,
+    #fd7710,
+    #ff671a
   );
-  background-size: 400% 400%;
 }

@@ -1,35 +1,8 @@
-// import { useEffect, useRef } from "react";
-// const App = () => {
-//   const videoRef = useRef();
-
-//   useEffect(() => {
-//     startVideo();
-//   }, []);
-
-//   const startVideo = async () => {
-//     try {
-//       const currentStream = await navigator.mediaDevices.getUserMedia({
-//         video: true,
-//       });
-//       videoRef.current.srcObject = currentStream;
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <video crossOrigin="anonymous" ref={videoRef} autoPlay></video>
-//     </div>
-//   );
-// };
-// export default App;
-
 import { useEffect, useRef, useState } from "react";
 import * as faceapi from "@vladmandic/face-api";
 import "./VideoPlayer.css";
 
-const VideoPlayer = ({ setExpression, setEmotion, emotion }) => {
+const VideoPlayer = ({ setExpression, setEmotion }) => {
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -72,7 +45,6 @@ const VideoPlayer = ({ setExpression, setEmotion, emotion }) => {
         .withFaceExpressions();
       if (detections.length > 0) {
         updateCanvas(detections, expressionHistory);
-        console.log("detections", detections);
       }
     }, 500);
   };
@@ -147,10 +119,7 @@ const VideoPlayer = ({ setExpression, setEmotion, emotion }) => {
         className="overflow-hidden rounded-lg appvide"
         autoPlay
       ></video>
-      <canvas
-        className="w-full h-full appcanvas "
-        ref={canvasRef}
-      ></canvas>
+      <canvas className="w-full h-full appcanvas" ref={canvasRef}></canvas>
     </div>
   );
 };
