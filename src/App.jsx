@@ -11,10 +11,11 @@ function App() {
   const [emotion, setEmotion] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [audio, setAudio] = useState("");
+ 
 
   return (
     <div
-      className={`flex flex-col w-screen h-screen overflow-hidden gradient-bg`}
+      className={`flex flex-col max-w-screen overflow-hidden gradient-bg`}
     >
       <h1 className="text-5xl font-extrabold text-center text-gray-100 font-quicksand">
         Face Emotion Recognition App

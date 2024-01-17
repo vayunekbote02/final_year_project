@@ -249,22 +249,22 @@ const SelectMusic = ({ selectedLanguage, emotion, setAudio }) => {
     neutral: {
       Hindi: [
         {
-          name: "neutral Puzzle",
-          url: "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3",
+          name: "Chabakya",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/instrumental/happy/spotifydown.com%20-%20Chanakya.mp3?raw=true",
         },
         {
-          name: "HA HA ",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
+          name: "Rannjhana",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/instrumental/happy/spotifydown.com%20-%20Raanjhana.mp3?raw=true",
         },
-        { name: "Song 3", url: "https://example.com/song3" },
+        { name: "Roslyn", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/instrumental/happy/spotifydown.com%20-%20Roslyn.mp3?raw=true" },
       ],
       English: [
         {
-          name: "English Kangaroo Music",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3",
+          name: "One Direction Night changes",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/neutral/One%20Direction%20-%20Night%20Changes.mp3?raw=true",
         },
-        { name: "Song B", url: "https://example.com/songB" },
-        { name: "Song C", url: "https://example.com/songC" },
+        { name: "One Direction - What Makes You Beautiful ", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/neutral/One%20Direction%20-%20What%20Makes%20You%20Beautiful%20(Official%20Video).mp3?raw=true" },
+        { name: "The Weeknd - Blinding Lights ", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/neutral/The%20Weeknd%20-%20Blinding%20Lights%20(Official%20Audio).mp3?raw=true" },
       ],
       Marathi: [
         {
@@ -278,22 +278,22 @@ const SelectMusic = ({ selectedLanguage, emotion, setAudio }) => {
     happy: {
       Hindi: [
         {
-          name: "happy Puzzle",
-          url: "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3",
+          name: "Makhna",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/hindi/happy/Makhna%20-%20Drive_%20Sushant%20Singh%20Rajput%2C%20Jacqueline%20Fernandez_%20Tanishk%20Bagchi%2C%20Asees%20Kaur.mp3?raw=true",
         },
         {
-          name: "HA HA ",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
+          name: "Hai Apna Dil toh Awara",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/hindi/happy/Hai%20Apna%20Dil%20To%20Awara%20_%20Sanam%20ft.%20Soogum%20Sookha.mp3?raw=true",
         },
-        { name: "Song 3", url: "https://example.com/song3" },
+        { name: "Mitwa", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/hindi/happy/Mitwa%20Full%20Video%20-%20KANK_Shahrukh%20Khan%2CRani%20Mukherjee_Shafqat%20Amanat%20Ali_Shankar%20Mahadevan.mp3?raw=true" },
       ],
       English: [
         {
-          name: "Kangaroo Music",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3",
+          name: "Dexys Midnight Runners",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/happy/Dexys%20Midnight%20Runners__ENGLISH__HAPPY.mp4?raw=true",
         },
-        { name: "Song B", url: "https://example.com/songB" },
-        { name: "Song C", url: "https://example.com/songC" },
+        { name: "The Gang-Celebration ", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/happy/Kool%20_%20The%20Gang%20-%20Celebration%20(Bizen%20Lopez%20Social%20Vision)__ENGLISH__HAPPY.mp3?raw=true" },
+        { name: "Enjoy", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/happy/audio__ENGLISH__HAPPY.mp3?raw=true" },
       ],
       Marathi: [
         {
@@ -318,11 +318,11 @@ const SelectMusic = ({ selectedLanguage, emotion, setAudio }) => {
       ],
       English: [
         {
-          name: "Kangaroo Music",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3",
+          name: "Billie Eilish - when the party is over",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/sad/Billie%20Eilish%20-%20when%20the%20party%20s%20over%20(Official%20Music%20Video).mp3",
         },
-        { name: "Song B", url: "https://example.com/songB" },
-        { name: "Song C", url: "https://example.com/songC" },
+        { name: "FINNEAS - Love is Pain", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/sad/FINNEAS%20-%20Love%20is%20Pain%20(Official%20Music%20Video).mp3" },
+        { name: "Lewis Capaldi - Someone You Loved", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/sad/Lewis%20Capaldi%20-%20Someone%20You%20Loved.mp3" },
       ],
       Marathi: [
         {
@@ -336,14 +336,14 @@ const SelectMusic = ({ selectedLanguage, emotion, setAudio }) => {
     angry: {
       Hindi: [
         {
-          name: "angry Puzzle",
-          url: "https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3",
+          name: "Ranjish",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/hindi/angry/spotifydown.com%20-%20Ranjish%20Hi%20Sahi.mp3?raw=true",
         },
         {
-          name: "HA HA ",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
+          name: "Kautilya",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/instrumental/angry/spotifydown.com%20-%20Kautilya%20(The%20Echo%20Project).mp3",
         },
-        { name: "Song 3", url: "https://example.com/song3" },
+        { name: "Raanjhana", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/instrumental/angry/spotifydown.com%20-%20Raanjhana.mp3" },
       ],
       English: [
         {
@@ -434,11 +434,11 @@ const SelectMusic = ({ selectedLanguage, emotion, setAudio }) => {
       ],
       English: [
         {
-          name: "Kangaroo Music",
-          url: "https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3",
+          name: "Billy Joel - Surprises",
+          url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/surprised/Billy%20Joel%20-%20Surprises%20(Audio).mp3?raw=true",
         },
-        { name: "Song B", url: "https://example.com/songB" },
-        { name: "Song C", url: "https://example.com/songC" },
+        { name: "Louis Armstrong - What A Wonderful World ", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/surprised/Louis%20Armstrong%20-%20What%20A%20Wonderful%20World%20(Official%20Video).mp3?raw=true" },
+        { name: "Surprise", url: "https://github.com/AmanSingh6574/FYP_audio_file/blob/main/english/surprised/Surprise.mp4?raw=true" },
       ],
       Marathi: [
         {
