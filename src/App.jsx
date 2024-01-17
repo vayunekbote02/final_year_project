@@ -11,12 +11,9 @@ function App() {
   const [emotion, setEmotion] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [audio, setAudio] = useState("");
- 
 
   return (
-    <div
-      className={`flex flex-col max-w-screen overflow-hidden gradient-bg`}
-    >
+    <div className="flex flex-col max-w-screen gradient-bg">
       <h1 className="text-5xl font-extrabold text-center text-gray-100 font-quicksand">
         Face Emotion Recognition App
       </h1>
@@ -55,22 +52,26 @@ function App() {
           <div></div>
         </div>
 
-        <div className="flex flex-col col-span-1 p-2">
+        <div className="flex flex-col col-span-1 gap-5 p-2">
           <div className="">
             <BarChart expression={expression} />
           </div>
-          <div className="">
-            <div>
+          <div>
+            <div
+              className={`${
+                !emotion ? "animate-pulse opacity-100" : "opacity-75"
+              } `}
+            >
               <img
-                src="/arrows.png"
+                src="/arrows3.png"
                 alt="Downward pointing arrows"
-                className="w-full"
+                className="w-full h-full mb-8"
               />
             </div>
             <div className="text-4xl font-bold text-white font-quicksand">
               {emotion ? (
                 <div className="text-center">
-                  Our model suggests that you are:{" "}
+                  Our model suggests that you are feeling:{" "}
                   <span className="text-orange-700">{emotion}</span>
                 </div>
               ) : (
@@ -79,11 +80,15 @@ function App() {
                 </div>
               )}
             </div>
-            <div>
+            <div
+              className={`${
+                !emotion ? "animate-pulse opacity-100" : "opacity-75"
+              } `}
+            >
               <img
-                src="/arrows.png"
-                alt="Downward pointing arrows"
-                className="w-full rotate-180"
+                src="/arrows3.png"
+                alt="Upward pointing arrows"
+                className="w-full mt-8 rotate-180"
               />
             </div>
           </div>
