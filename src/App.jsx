@@ -5,18 +5,34 @@ import "react-h5-audio-player/lib/styles.css";
 import BarChart from "./components/BarChart";
 import { useState } from "react";
 import SelectMusic from "./components/SelectMusic";
+import { Link } from "react-router-dom";
 
 function App() {
   const [expression, setExpression] = useState({});
   const [emotion, setEmotion] = useState("");
+  console.log(emotion);
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [audio, setAudio] = useState("");
 
   return (
     <div className="flex flex-col max-w-screen gradient-bg">
-      <h1 className="text-5xl font-extrabold text-center text-gray-100 font-quicksand">
-        Face Emotion Recognition App
-      </h1>
+      <div className="flex items-center justify-between gap-3 px-6 py-4">
+        <h1 className="text-5xl font-extrabold text-gray-100 font-quicksand">
+          Face Emotion Recognition App
+        </h1>
+        <div className="flex gap-4">
+          <Link to="/report">
+            <button className="px-4 py-2 text-white bg-red-500 rounded-lg shadow-lg cursor-pointer hover:bg-red-400 hover:shadow-none">
+              Generate Report
+            </button>
+          </Link>
+          <Link to="/info">
+            <button className="px-4 py-2 text-white bg-red-500 rounded-lg shadow-lg cursor-pointer hover:bg-red-400 hover:shadow-none">
+              More Information
+            </button>
+          </Link>
+        </div>
+      </div>
 
       <div className="grid grid-cols-4 gap-4 p-2">
         <div className="flex flex-col col-span-1 p-2">
