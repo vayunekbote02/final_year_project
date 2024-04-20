@@ -1,8 +1,10 @@
 import { Bar } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 
-const BarChart = ({ expression }) => {
+const BarChart = ({ expression, theme }) => {
   const labels = Object.keys(expression);
+  const chartColor =
+    theme === "bluuee" ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)";
   let percentages = Object.values(expression).map((value) =>
     (value * 100).toFixed(2)
   );
@@ -25,29 +27,37 @@ const BarChart = ({ expression }) => {
     scales: {
       x: {
         ticks: {
-          color: "rgba(255, 255, 255, 0.7)",
+          color: chartColor,
         },
       },
       y: {
         beginAtZero: true,
         max: 100,
         ticks: {
-          color: "rgba(255, 255, 255, 0.7)",
+          color: chartColor,
         },
       },
     },
     plugins: {
       legend: {
         labels: {
-          color: "rgba(255, 255, 255, 0.7)",
+          color: chartColor,
         },
       },
     },
   };
 
   return (
-    <div className="w-full h-full bg-yellow-600 border border-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30">
-      <h2 className="font-bold text-center text-white font-quicksand">
+    <div
+      className={`w-full h-full ${
+        theme == "bluuee" ? "bg-blue-400" : "bg-yellow-600"
+      } border border-gray-100 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30`}
+    >
+      <h2
+        className={`font-bold text-center ${
+          theme === "bluuee" ? "text-black" : "text-white"
+        } font-quicksand`}
+      >
         Realtime expression prediction chart
       </h2>
       <Bar className="w-full " data={chartData} options={chartOptions} />

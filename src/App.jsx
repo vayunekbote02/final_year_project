@@ -3,34 +3,86 @@ import VideoPlayer from "./components/VideoPlayer";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import BarChart from "./components/BarChart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SelectMusic from "./components/SelectMusic";
 import { Link } from "react-router-dom";
+import { MdOutlineLightMode } from "react-icons/md";
+import { MdOutlineDarkMode } from "react-icons/md";
 
 function App() {
   const [expression, setExpression] = useState({});
   const [emotion, setEmotion] = useState("");
-  console.log(emotion);
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [audio, setAudio] = useState("");
+  const [theme, setTheme] = useState("");
+
+  const d = [
+    { emotion: "happy", emoji: "😊" },
+    { emotion: "neutral", emoji: "😐" },
+    { emotion: "sad", emoji: "😔" },
+    { emotion: "angry", emoji: "😠" },
+    { emotion: "fearful", emoji: "😨" },
+    { emotion: "surprised", emoji: "😯" },
+    { emotion: "disgusted", emoji: "😒" },
+  ];
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const newTheme = prev == "bluuee" ? "yllo" : "bluuee";
+      localStorage.setItem("emotion-theme", newTheme);
+      return newTheme;
+    });
+  };
+
+  useEffect(() => {
+    const getTheme = localStorage.getItem("emotion-theme")
+      ? localStorage.getItem("emotion-theme")
+      : "yllo";
+    setTheme(getTheme);
+  }, []);
 
   return (
-    <div className="flex flex-col max-w-screen gradient-bg">
+    <div
+      className={`flex flex-col max-w-screen ${
+        theme == "bluuee" ? "gradient-bg-bluuee" : "gradient-bg-yllo"
+      }`}
+    >
       <div className="flex items-center justify-between gap-3 px-6 py-4">
         <h1 className="text-5xl font-extrabold text-gray-100 font-quicksand">
           Face Emotion Recognition App
         </h1>
-        <div className="flex gap-4">
-          <Link to="/report">
+        <div className="flex items-center gap-4">
+          {/* <Link to="/report">
             <button className="px-4 py-2 text-white bg-red-500 rounded-lg shadow-lg cursor-pointer hover:bg-red-400 hover:shadow-none">
               Generate Report
             </button>
-          </Link>
+          </Link> */}
+
           <Link to="/info">
-            <button className="px-4 py-2 text-white bg-red-500 rounded-lg shadow-lg cursor-pointer hover:bg-red-400 hover:shadow-none">
+            <button
+              className={`px-4 py-2 text-white ${
+                theme == "bluuee"
+                  ? "bg-blue-500 hover:bg-blue-400"
+                  : "bg-red-500 hover:bg-red-400"
+              } rounded-lg shadow-lg cursor-pointer  hover:shadow-none`}
+            >
               More Information
             </button>
           </Link>
+          <button
+            onClick={toggleTheme}
+            className={`text-3xl ${
+              theme == "bluuee"
+                ? "hover:animate-pulse hover:text-blue-800"
+                : "hover:text-white hover:animate-pulse"
+            }`}
+          >
+            {theme === "bluuee" ? (
+              <MdOutlineLightMode />
+            ) : (
+              <MdOutlineDarkMode />
+            )}
+          </button>
         </div>
       </div>
 
@@ -40,6 +92,7 @@ function App() {
             <Dropdown
               setSelectedLanguage={setSelectedLanguage}
               selectedLanguage={selectedLanguage}
+              theme={theme}
             />
           </div>
           <div className="mt-20">
@@ -70,7 +123,7 @@ function App() {
 
         <div className="flex flex-col col-span-1 gap-5 p-2">
           <div className="">
-            <BarChart expression={expression} />
+            <BarChart expression={expression} theme={theme} />
           </div>
           <div>
             <div
@@ -88,7 +141,13 @@ function App() {
               {emotion ? (
                 <div className="text-center">
                   Our model suggests that you are feeling:{" "}
-                  <span className="text-orange-700">{emotion}</span>
+                  <span
+                    className={`${
+                      theme == "bluuee" ? "text-green-700" : "text-orange-700"
+                    }`}
+                  >
+                    {emotion} {d.find((item) => item.emotion === emotion).emoji}
+                  </span>
                 </div>
               ) : (
                 <div className="text-center animate-pulse">

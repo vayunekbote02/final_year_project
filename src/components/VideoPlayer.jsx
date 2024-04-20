@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import * as faceapi from "@vladmandic/face-api";
 import "./VideoPlayer.css";
 
+// eslint-disable-next-line react/prop-types
 const VideoPlayer = ({ setExpression, setEmotion }) => {
   const videoRef = useRef();
   const canvasRef = useRef();

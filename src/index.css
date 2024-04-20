@@ -14,7 +14,19 @@
   }
 }
 
-.gradient-bg {
+.gradient-bg-bluuee {
+  background-image: linear-gradient(
+    to right top,
+    #2ecc71,
+    #37b2d6,
+    #52c4e8,
+    #73d2f5,
+    #94e1f8,
+    #b8e6f9
+  );
+}
+
+.gradient-bg-yllo {
   background-image: linear-gradient(
     to right top,
     #ead600,

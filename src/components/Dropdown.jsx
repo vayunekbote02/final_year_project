@@ -22,10 +22,10 @@
 //         <div id="bouton" className="relative w-full group">
 //           <button
 //             onClick={handleButtonClick}
-//             className="relative w-full py-3 pr-12 bg-yellow-100 min-w-44 focus:outline-none"
+//             className="relative w-full py-3 pr-12 bg-blue-100 min-w-44 focus:outline-none"
 //           >
 //             Select music language
-//             <span className="absolute top-0 right-0 flex items-center justify-center w-12 h-full bg-yellow-200">
+//             <span className="absolute top-0 right-0 flex items-center justify-center w-12 h-full bg-blue-200">
 //               <svg
 //                 xmlns="http://www.w3.org/2000/svg"
 //                 fill="none"
@@ -45,22 +45,22 @@
 //           <div
 //             className={`absolute flex-col ${
 //               isOpen ? "transition-all opacity-100" : "opacity-0"
-//             } w-full top-full bg-yellow-50 origin-top`}
+//             } w-full top-full bg-blue-50 origin-top`}
 //           >
 //             <div
-//               className="relative flex items-center justify-between w-full px-10 py-2 font-semibold transition-all duration-150 bg-yellow-100 border border-yellow-200 cursor-pointer hover:bg-yellow-200 "
+//               className="relative flex items-center justify-between w-full px-10 py-2 font-semibold transition-all duration-150 bg-blue-100 border border-blue-200 cursor-pointer hover:bg-blue-200 "
 //               onClick={() => handleItemClick("Hindi")}
 //             >
 //               Hindi
 //             </div>
 //             <div
-//               className="relative flex items-center justify-between w-full px-10 py-2 font-semibold transition-all duration-150 bg-yellow-100 border cursor-pointer border-stone-200 hover:bg-yellow-200 "
+//               className="relative flex items-center justify-between w-full px-10 py-2 font-semibold transition-all duration-150 bg-blue-100 border cursor-pointer border-stone-200 hover:bg-blue-200 "
 //               onClick={() => handleItemClick("English")}
 //             >
 //               English
 //             </div>
 //             <div
-//               className="relative flex items-center justify-between w-full px-10 py-2 font-semibold transition-all duration-150 bg-yellow-100 border cursor-pointer border-stone-200 hover:bg-yellow-200 "
+//               className="relative flex items-center justify-between w-full px-10 py-2 font-semibold transition-all duration-150 bg-blue-100 border cursor-pointer border-stone-200 hover:bg-blue-200 "
 //               onClick={() => handleItemClick("Marathi")}
 //             >
 //               Marathi
@@ -74,20 +74,30 @@
 
 // export default Dropdown;
 
-const Dropdown = ({ setSelectedLanguage, selectedLanguage }) => {
+const Dropdown = ({ setSelectedLanguage, selectedLanguage, theme }) => {
   const handleItemClick = (language) => {
     setSelectedLanguage(language);
   };
 
   return (
-    <div className="p-4 bg-yellow-200 rounded-md font-quicksand">
-      <div className="py-4 mb-3 text-xl font-bold text-center bg-yellow-400 rounded-lg ">
+    <div
+      className={`p-4 ${
+        theme == "bluuee" ? "bg-blue-200" : "bg-yellow-200"
+      } rounded-md font-quicksand`}
+    >
+      <div
+        className={`py-4 mb-3 text-xl font-bold text-center ${
+          theme == "bluuee" ? "bg-blue-400" : "bg-yellow-400"
+        } rounded-lg `}
+      >
         Select music language
       </div>
       {/* Language options */}
       <div className="cursor-pointer">
         <div
-          className="flex items-center justify-between p-4 text-lg font-semibold border-b-2 border-black hover:bg-yellow-300 group"
+          className={`flex items-center justify-between p-4 text-lg font-semibold border-b-2 border-black ${
+            theme == "bluuee" ? "hover:bg-blue-300" : "hover:bg-yellow-300"
+          } group`}
           onClick={() => handleItemClick("Marathi")}
         >
           <p>Marathi</p>
@@ -100,7 +110,9 @@ const Dropdown = ({ setSelectedLanguage, selectedLanguage }) => {
           />
         </div>
         <div
-          className="flex items-center justify-between p-4 text-lg font-semibold border-b-2 border-black hover:bg-yellow-300 group"
+          className={`flex items-center justify-between p-4 text-lg font-semibold border-b-2 border-black ${
+            theme == "bluuee" ? "hover:bg-blue-300" : "hover:bg-yellow-300"
+          } group`}
           onClick={() => handleItemClick("Hindi")}
         >
           <p>Hindi</p>
@@ -113,7 +125,9 @@ const Dropdown = ({ setSelectedLanguage, selectedLanguage }) => {
           />
         </div>
         <div
-          className="flex items-center justify-between p-4 text-lg font-semibold border-black hover:bg-yellow-300 group"
+          className={`flex items-center justify-between p-4 text-lg font-semibold border-b-2 border-black ${
+            theme == "bluuee" ? "hover:bg-blue-300" : "hover:bg-yellow-300"
+          } group`}
           onClick={() => handleItemClick("English")}
         >
           <p>English</p>

@@ -1,14 +1,34 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const InfoPage = () => {
+  const [theme, setTheme] = useState("");
+
+  useEffect(() => {
+    const getTheme = localStorage.getItem("emotion-theme")
+      ? localStorage.getItem("emotion-theme")
+      : "yllo";
+    setTheme(getTheme);
+  }, []);
+
   return (
-    <div className="flex flex-col h-screen gradient-bg">
+    <div
+      className={`flex flex-col h-screen ${
+        theme == "bluuee" ? "gradient-bg-bluuee" : "gradient-bg-yllo"
+      }`}
+    >
       <div className="flex items-center justify-between gap-3 px-6 py-4 bg-white shadow-md bg-opacity-10">
         <nav className="text-5xl font-extrabold text-gray-100 font-quicksand">
           About our app
         </nav>
         <Link to="/">
-          <button className="px-4 py-2 text-white bg-red-500 rounded-lg shadow-lg cursor-pointer hover:bg-red-400 hover:shadow-none">
+          <button
+            className={`px-4 py-2 text-white ${
+              theme == "bluuee"
+                ? "bg-blue-500 hover:bg-blue-400"
+                : "bg-red-500 hover:bg-red-400"
+            } rounded-lg shadow-lg cursor-pointer hover:shadow-none`}
+          >
             Go Home
           </button>
         </Link>
