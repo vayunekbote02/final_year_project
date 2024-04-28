@@ -44,10 +44,11 @@ const VideoPlayer = ({ setExpression, setEmotion }) => {
         .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
         .withFaceExpressions();
+     
       if (detections.length > 0) {
         updateCanvas(detections, expressionHistory);
       }
-    }, 500);
+    }, 400);
   };
 
   const updateCanvas = (detections, expressionHistory) => {
