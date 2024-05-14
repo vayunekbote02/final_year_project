@@ -7,23 +7,26 @@ const VideoPlayer = ({ setExpression, setEmotion }) => {
   const videoRef = useRef();
   const canvasRef = useRef();
 
+
   useEffect(() => {
     async function init() {
       await loadModels();
-      startVideo();
+      await startVideo();
       faceMyDetect();
     }
     init();
-  }, [videoRef, canvasRef]);
+  }, [videoRef.current, canvasRef.current]);
+
 
   const startVideo = async () => {
     try {
       const currentStream = await navigator.mediaDevices.getUserMedia({
         video: true,
       });
+      // console.log(currentStream)
       videoRef.current.srcObject = currentStream;
     } catch (error) {
-      console.error(error);
+      console.error("error in media stream", error);
     }
   };
 
@@ -41,10 +44,10 @@ const VideoPlayer = ({ setExpression, setEmotion }) => {
 
     setInterval(async () => {
       const detections = await faceapi
-        .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions())
+        .detectAllFaces(videoRef.current, new faceapi.TinyFaceDetectorOptions({ maxResults: 1 }))
         .withFaceLandmarks()
         .withFaceExpressions();
-     
+      // console.log(detections)
       if (detections.length > 0) {
         updateCanvas(detections, expressionHistory);
       }
@@ -62,17 +65,11 @@ const VideoPlayer = ({ setExpression, setEmotion }) => {
     if (expressions) {
       setExpression(expressions);
       const { maxExpression, maxProbability } = findMaxExpression(expressions);
-
-      // console.log("Detected emotion:", maxExpression);
-      // console.log("Probability:", maxProbability);
-
       expressionHistory.push(maxExpression);
-      // console.log(expressionHistory);
 
       if (expressionHistory.length >= 10) {
         const predominantExpression =
           findPredominantExpression(expressionHistory);
-        // console.log("Predominant emotion in the last 10 detections:", predominantExpression);
         setEmotion(predominantExpression);
         expressionHistory.length = 0;
       }
